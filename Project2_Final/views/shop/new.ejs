@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs')%>  
+<main>
+    <section class="sell-intro">
+        <h1>List Your Bridal Item</h1>
+        <p>Sell your pre-loved bridal wear to new brides-to-be. Fill out the details below!</p>
+    </section>
+
+    <section class="listing-form">
+        <form action = '/items' method = 'POST' enctype="multipart/form-data">
+            <label for="title">Item Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="seller">Seller Name:</label>
+            <input type="text" id="seller" name="seller" required>
+
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="">Select Condition</option>
+                <option value="new">New</option>
+                <option value="like-new">Like New</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="needs-repair">Needs Repair</option>
+            </select>
+
+            <label for="price">Price (INR):</label>
+            <input type="number" id="price" name="price" min="0" required>
+
+            <label for="details">Item Details:</label>
+            <textarea id="details" name="details" rows="4" required></textarea>
+
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <button type="submit">Submit Listing</button>
+        </form>
+    </section>
+</main>
+    <%- include('../partials/footer.ejs')%>

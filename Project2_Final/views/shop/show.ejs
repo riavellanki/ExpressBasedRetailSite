@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs')%>  
+<main>
+    <div class="item-container">
+        <div class="item-image">
+            <img src="<%= item.image %>" alt="<%= item.title %>">
+        </div>
+        <div class="item-details">
+            <h1><%= item.title %></h1>
+            <p class="condition"><strong>Condition:</strong> <%= item.condition %></p>
+            <p class="price"><strong>Price:</strong> ₹<%= item.price %> | <span><%= item.offers %> offers</span></p>
+            <p class="seller"><strong>Seller:</strong> <%= item.seller %></p>
+            <p class="description"><%= item.details %></p>
+            <form>
+            <div class="buttons">
+                <button type = 'submit' formmethod = 'GET' formaction = '/items/<%= item.id%>/edit'><i class="fas fa-edit"></i> Edit</button>
+                <button type = 'submit' formmethod = 'POST' formaction = '/items/<%= item.id%>?_method=Delete'><i class="fas fa-trash"></i> Delete</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</main>
+    <%- include('../partials/footer.ejs')%>

@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs') %>  
+<main>
+    <section class="sell-intro">
+        <h1>Edit Your Bridal Item</h1>
+        <p>Edit the details of your pre-loved bridal wear below!</p>
+    </section>
+
+    <section class="listing-form">
+        <form action="/items/<%= item.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            
+            <label for="title">Item Title:</label>
+            <input type="text" id="title" name="title" value="<%= item.title %>" required>
+
+            <label for="seller">Seller Name:</label>
+            <input type="text" id="seller" name="seller" value="<%= item.seller %>" required>
+
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="new" <%= item.condition === 'new' ? 'selected' : '' %>>New</option>
+                <option value="like-new" <%= item.condition === 'like-new' ? 'selected' : '' %>>Like New</option>
+                <option value="good" <%= item.condition === 'good' ? 'selected' : '' %>>Good</option>
+                <option value="fair" <%= item.condition === 'fair' ? 'selected' : '' %>>Fair</option>
+                <option value="needs-repair" <%= item.condition === 'needs-repair' ? 'selected' : '' %>>Needs Repair</option>
+            </select>
+
+            <label for="price">Price (INR):</label>
+            <input type="number" id="price" name="price" value="<%= item.price %>" min="0" required>
+
+            <label for="details">Item Details:</label>
+            <textarea id="details" name="details" rows="4" required><%= item.details %></textarea>
+
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <button type="submit">Update Listing</button>
+        </form>
+    </section>
+</main>
+<%- include('../partials/footer.ejs') %>
